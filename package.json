@@ -1,0 +1,25 @@
+﻿{
+  "name": "filehost",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private file hosting on Cloudflare Workers + R2 + D1",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:local": "wrangler d1 migrations apply filehost-db --local",
+    "db:remote": "wrangler d1 migrations apply filehost-db --remote"
+  },
+  "dependencies": {
+    "hono": "^4.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261023.1",
+    "typescript": "^5.7.0",
+    "wrangler": "^4.0.0"
+  }
+}
+

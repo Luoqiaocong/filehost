@@ -1,0 +1,5 @@
+﻿# 本地开发用的 secret，复制为 .dev.vars（已在 .gitignore 中）。
+# 线上环境请用 `npx wrangler secret put ADMIN_PASSWORD` / `SESSION_SECRET` 设置。
+ADMIN_PASSWORD=change-me-to-a-strong-password
+# 32 位以上随机字符，例如：node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+SESSION_SECRET=replace-with-at-least-32-random-characters-xxxxxxxx

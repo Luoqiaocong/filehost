@@ -1,0 +1,25 @@
+name = "filehost"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[vars]
+SITE_NAME = "文件托管"
+# Workers 请求体硬上限 100MB，超过这个值的上传在 Cloudflare 边缘就会被拒，调大没有意义。
+MAX_UPLOAD_MB = "100"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "filehost-bucket"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "filehost-db"
+# 运行 `npm run setup` 会自动把这里替换为真实的 database_id
+database_id = "58c63ea9-e5fe-418e-95a8-5f0266b03d9e"
+migrations_dir = "migrations"
+
+# 静态资源（站点图标）。先跑 Worker，未命中的路径才回落到这些文件。
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
