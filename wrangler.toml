@@ -20,9 +20,14 @@ database_name = "filehost-db"
 database_id = "58c63ea9-e5fe-418e-95a8-5f0266b03d9e"
 migrations_dir = "migrations"
 
-# 优选 IP 下载域：DNS 里给 dl 建一条「代理」状态的 A 记录，指向挑选过的
-# Cloudflare 节点 IP（比如 172.66.0.1），国内直连会比默认解析到的 IP 快几倍。
+# 优选 IP 用的域名：DNS 里建「代理」状态的 A 记录，指向挑过的 Cloudflare
+# 节点 IP（当前 172.64.145.202），国内直连比 CF 自动分配的 IP 快几倍。
 # 用 route 而不是 Custom Domain，是为了让 DNS 记录完全由自己掌控。
+# fs 是主域名，dl 留着当备用，不用了可以删掉下面这一段。
+[[routes]]
+pattern = "fs.heiseven.top/*"
+zone_name = "heiseven.top"
+
 [[routes]]
 pattern = "dl.heiseven.top/*"
 zone_name = "heiseven.top"
