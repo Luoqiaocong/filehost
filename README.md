@@ -67,7 +67,7 @@ npm run db:local && npm run dev  # http://127.0.0.1:8787
 - 上传大小以 `Content-Length` 预检并用 R2 实际字节数复核；更大的文件需分片上传，本项目不做
 - 下载与预览一律按扩展名判类型，不信任客户端 MIME；SVG / HTML 只下载不内联
 - 会话为自实现 HMAC-SHA256 cookie，同一 IP 连续失败 5 次锁定 15 分钟
-- 国内网络下 `*.workers.dev` 常被 DNS 污染、直接不可达，对外分享请绑定自己的域名；若仍偏慢，可再建一个子域、用 Worker `routes` 承接并把它解析到挑过的 Cloudflare 节点 IP（用 route 而非 Custom Domain，DNS 才由自己掌控）
+- 国内网络下 `*.workers.dev` 常被 DNS 污染、直接不可达，对外分享请绑定自己的域名；若仍偏慢，可再建一个子域、用 Worker `routes` 承接，并把它解析到挑过的 Cloudflare 节点 IP（用 route 而非 Custom Domain，DNS 才由自己掌控）。挑 IP 用 [CloudflareSpeedTest](https://github.com/XIU2/CloudflareSpeedTest)，注意它的下载测速地址要换成自己站内的大文件才准
 - 没有多用户、权限系统、ORM、回收站、测试
 
 ## 许可
